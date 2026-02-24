@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HI MEMBERS | 에이치아이여성의원</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ════════════ NAV ════════════ -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo-circle">HI</div>
+    <div>
+      <div class="nav-name">에이치아이여성의원</div>
+      <div class="nav-sub">HI MEMBERS</div>
+    </div>
+  </a>
+  <button class="btn-admin" onclick="openLogin()">관리자 패널</button>
+</nav>
+
+<!-- ════════════ WIDGET BAR ════════════ -->
+<div class="widget-bar">
+  <div class="widget-group">
+    <div class="widget-item">
+      <span class="w-icon">📅</span>
+      <span id="wDate">-</span>
+    </div>
+    <div class="widget-divider"></div>
+    <div class="widget-item">
+      <span class="w-icon">🕐</span>
+      <span id="wTime">-</span>
+    </div>
+  </div>
+  <div class="widget-item" id="wWeather">
+    <span id="wWeatherIcon">⛅</span>
+    <span id="wTemp">--°C</span>
+    <span class="widget-divider"></span>
+    <span id="wDesc">날씨 불러오는 중...</span>
+    <span class="w-city" id="wCity"></span>
+  </div>
+</div>
+
+<!-- ════════════ HERO ════════════ -->
+<section class="hero">
+  <div class="hero-chip">✦ HI MEMBERS</div>
+  <h1>HI에서 함께한<br>소중한 여정을 간직하세요</h1>
+  <p class="hero-desc">
+    에이치아이여성의원에서 임신에 성공하신 모든 가족들은<br>
+    HI 멤버스에 가입하실 수 있습니다.<br>
+    소중한 인연을 함께 기억하고 싶습니다.
+  </p>
+  <div class="hero-cta">
+    <button type="button" class="btn-fill" onclick="document.getElementById('form-section').scrollIntoView({behavior:'smooth'})">지금 멤버스 가입하기</button>
+    <a class="btn-outline" href="https://forms.gle/fFFwMoNRsrVrRZ2h8" target="_blank" rel="noopener">구글 폼으로 신청하기</a>
+  </div>
+</section>
+
+<!-- ════════════ STATS BAR ════════════ -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-n" id="statTotal">0</div>
+    <div class="stat-l">멤버스 가입 수</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n">3가지</div>
+    <div class="stat-l">멤버십 혜택</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n">무료</div>
+    <div class="stat-l">가입 비용</div>
+  </div>
+</div>
+
+<!-- ════════════ BENEFITS ════════════ -->
+<section class="section">
+  <div class="sec-title">
+    <h2>HI MEMBERS 혜택</h2>
+    <p>HI 멤버스만을 위한 특별한 3가지 혜택을 누려보세요</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon">🎁</div>
+      <div class="benefit-badge">혜택 1</div>
+      <h3>이벤트 선물</h3>
+      <p>특별한 날마다 마련된<br>이벤트와 소중한 선물을<br>받으실 수 있습니다.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">💌</div>
+      <div class="benefit-badge">혜택 2</div>
+      <h3>추천인 선물</h3>
+      <p>지인을 에이치아이여성의원에<br>추천하시면 감사의 선물을<br>드립니다.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">📸</div>
+      <div class="benefit-badge">혜택 3</div>
+      <h3>가족 사진 촬영</h3>
+      <p>소중한 가족과 함께하는<br>특별한 가족 사진 촬영<br>기회를 드립니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FORM SECTION ════════════ -->
+<section class="form-section" id="form-section">
+  <div class="form-card">
+    <div class="form-head">
+      <h2>멤버스 가입 신청</h2>
+      <p>아래 정보를 입력해 주시면 HI 멤버스에 가입됩니다</p>
+    </div>
+
+    <form id="memberForm" novalidate>
+
+      <!-- 이름 -->
+      <div class="form-group" id="g-name">
+        <span class="flabel">이름 <span class="req">*</span></span>
+        <input type="text" id="f-name" placeholder="성함을 입력해 주세요" />
+        <div class="ferr" id="e-name">이름을 입력해 주세요.</div>
+      </div>
+
+      <!-- 전화번호 -->
+      <div class="form-group" id="g-phone">
+        <span class="flabel">전화번호 <span class="req">*</span></span>
+        <input type="tel" id="f-phone" placeholder="010-0000-0000" />
+        <div class="ferr" id="e-phone">올바른 전화번호를 입력해 주세요.</div>
+      </div>
+
+      <!-- 멤버스 가입 동의 -->
+      <div class="form-group" id="g-consent">
+        <span class="flabel">멤버스 가입 동의 <span class="req">*</span></span>
+        <label class="c-option">
+          <input type="checkbox" id="f-consent" />
+          네, 동의합니다
+        </label>
+        <div class="ferr" id="e-consent">가입 동의를 선택해 주세요.</div>
+      </div>
+
+      <!-- 졸업 날짜 -->
+      <div class="form-group" id="g-date">
+        <span class="flabel">에이치아이 졸업 날짜 <span class="req">*</span></span>
+        <input type="date" id="f-date" />
+        <div class="ferr" id="e-date">졸업 날짜를 선택해 주세요.</div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- 혜택 확인 -->
+      <div class="info-box">
+        <strong>멤버스 혜택을 확인해 주세요.</strong><br>
+        아래 항목들을 확인하신 후 체크해 주세요. (선택 사항)
+      </div>
+
+      <div class="form-group">
+        <span class="flabel">[혜택 1] 이벤트 선물 안내 확인 <span class="opt-tag">선택</span></span>
+        <label class="c-option">
+          <input type="checkbox" id="f-benefit1" />
+          확인했습니다
+        </label>
+      </div>
+
+      <div class="form-group">
+        <span class="flabel">[혜택 2] 추천 선물 안내 확인 <span class="opt-tag">선택</span></span>
+        <label class="c-option">
+          <input type="checkbox" id="f-benefit2" />
+          확인했습니다
+        </label>
+      </div>
+
+      <div class="form-group">
+        <span class="flabel">[혜택 3] 가족 사진 안내 확인 <span class="opt-tag">선택</span></span>
+        <label class="c-option">
+          <input type="checkbox" id="f-benefit3" />
+          확인했습니다
+        </label>
+      </div>
+
+      <div class="form-group">
+        <span class="flabel">임신·출산 소식 안내 확인 <span class="opt-tag">선택</span></span>
+        <label class="c-option">
+          <input type="checkbox" id="f-news" />
+          확인했습니다
+        </label>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- 추가 문의 -->
+      <div class="form-group">
+        <span class="flabel">추가 문의사항 <span class="opt-tag">선택</span></span>
+        <textarea id="f-inquiry" placeholder="문의사항이 있으시면 자유롭게 입력해 주세요."></textarea>
+      </div>
+
+      <!-- 비식별 의료정보 활용 동의 -->
+      <div class="form-group" id="g-medical">
+        <span class="flabel">비식별 의료정보 활용 동의 <span class="req">*</span></span>
+        <div class="radio-group">
+          <label class="r-option">
+            <input type="radio" name="medical" value="네, 동의합니다" />
+            네, 동의합니다
+          </label>
+          <label class="r-option">
+            <input type="radio" name="medical" value="아니요, 동의하지 않습니다" />
+            아니요, 동의하지 않습니다
+          </label>
+        </div>
+        <div class="ferr" id="e-medical">의료정보 활용 동의 여부를 선택해 주세요.</div>
+      </div>
+
+      <button type="submit" class="btn-submit">HI 멤버스 가입 신청하기</button>
+    </form>
+
+    <div class="success-box" id="successBox">
+      <div class="success-header">
+        <div class="success-icon">✓</div>
+        <h3>HI 멤버스에 가입되셨습니다!</h3>
+        <p>소중한 인연을 함께해 주셔서 감사합니다.<br>멤버스 혜택을 마음껏 누려보세요.</p>
+      </div>
+      <div class="success-summary" id="successSummary"></div>
+      <div class="success-actions">
+        <button type="button" class="btn-cert-dl" onclick="downloadCertificate()">📄 가입증 다운로드</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <strong>에이치아이여성의원</strong><br>
+  HI MEMBERS · 임신 성공 가족을 위한 특별한 멤버십<br>
+  문의사항이 있으시면 병원으로 연락해 주세요.
+</footer>
+
+
+<!-- ════════════ MODAL: 관리자 로그인 ════════════ -->
+<div class="overlay" id="loginOverlay">
+  <div class="modal">
+    <h3>🔐 관리자 로그인</h3>
+    <span class="flabel" style="display:block;margin-bottom:8px;">비밀번호</span>
+    <input type="password" id="adminPw" placeholder="관리자 비밀번호 입력"
+           onkeydown="if(event.key==='Enter') doLogin()" />
+    <p class="modal-note">기본 비밀번호: <strong>hi1234</strong></p>
+    <div class="merr" id="loginErr">비밀번호가 올바르지 않습니다.</div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeOverlay('loginOverlay')">취소</button>
+      <button class="btn-ok" onclick="doLogin()">로그인</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ MODAL: 단건 삭제 확인 ════════════ -->
+<div class="overlay" id="delOverlay">
+  <div class="modal">
+    <h3>삭제 확인</h3>
+    <p>해당 멤버 데이터를 삭제하시겠습니까?<br>이 작업은 되돌릴 수 없습니다.</p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeOverlay('delOverlay')">취소</button>
+      <button class="btn-ok btn-danger" onclick="confirmDel()">삭제</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ MODAL: 전체 삭제 확인 ════════════ -->
+<div class="overlay" id="clearOverlay">
+  <div class="modal">
+    <h3>전체 삭제 확인</h3>
+    <p>모든 멤버 데이터를 삭제하시겠습니까?<br>이 작업은 되돌릴 수 없습니다.</p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeOverlay('clearOverlay')">취소</button>
+      <button class="btn-ok btn-danger" onclick="confirmClearAll()">전체 삭제</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════ ADMIN PANEL ════════════ -->
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-topbar">
+    <h2>HI MEMBERS — 관리자 패널</h2>
+    <button class="btn-close-admin" onclick="closeAdmin()">← 나가기</button>
+  </div>
+
+  <div class="admin-body">
+
+    <!-- 통계 -->
+    <div class="a-stats">
+      <div class="a-stat">
+        <div class="a-stat-n" id="aTotal">0</div>
+        <div class="a-stat-l">총 멤버 수</div>
+      </div>
+      <div class="a-stat">
+        <div class="a-stat-n" id="aToday">0</div>
+        <div class="a-stat-l">오늘 가입</div>
+      </div>
+      <div class="a-stat">
+        <div class="a-stat-n" id="aMedYes">0</div>
+        <div class="a-stat-l">의료정보 동의</div>
+      </div>
+      <div class="a-stat">
+        <div class="a-stat-n" id="aMedNo">0</div>
+        <div class="a-stat-l">의료정보 비동의</div>
+      </div>
+    </div>
+
+    <!-- 툴바 -->
+    <div class="a-toolbar">
+      <input class="a-search" type="text" id="searchBox"
+             placeholder="이름 또는 전화번호로 검색..."
+             oninput="renderTable()" />
+      <button class="btn-csv" onclick="exportCSV()">CSV 내보내기</button>
+      <button class="btn-del-all" onclick="openClearAll()">전체 삭제</button>
+    </div>
+
+    <!-- 테이블 -->
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>가입동의</th>
+            <th>졸업날짜</th>
+            <th>혜택1</th>
+            <th>혜택2</th>
+            <th>혜택3</th>
+            <th>소식안내</th>
+            <th>의료정보</th>
+            <th>문의사항</th>
+            <th>가입일시</th>
+            <th>관리</th>
+          </tr>
+        </thead>
+        <tbody id="tblBody"></tbody>
+      </table>
+    </div>
+
+    <div class="empty-tbl" id="emptyTbl">
+      <h3>등록된 멤버가 없습니다</h3>
+      <p>멤버스 가입 신청이 들어오면 이곳에 표시됩니다.</p>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
